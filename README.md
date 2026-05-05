@@ -1,6 +1,6 @@
 # ChatBI 股票查询助手
 
-ChatBI 助手是一个基于自然语言的股票数据查询与分析应用，包含 FastAPI 后端、React 管理/聊天前端、SQLite 数据查询、LLM 语义解析、SQL 生成、图表生成和 ARIMA 分析能力。
+ChatBI 助手是一个基于自然语言的 ChatBI（对话式商业智能）股票分析系统，包含 FastAPI 后端、React 管理/聊天前端、SQLite 数据查询、LLM 语义解析、SQL 生成、图表生成和 ARIMA 趋势预测能力。
 
 ## 功能概览
 
