@@ -1,0 +1,475 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-app: #070b16;
+  --bg-elevated: #121a2a;
+  --bg-subtle: #0d1524;
+  --bg-soft: #161f32;
+  --text-primary: #edf2ff;
+  --text-secondary: #9aaad0;
+  --text-inverse: #f8fafc;
+  --border-color: #26344f;
+  --primary-color: #5b8cff;
+  --primary-soft: rgba(91, 140, 255, 0.2);
+  --success-color: #3ddc97;
+  --danger-color: #ff6b7a;
+  --font-xs: 12px;
+  --font-sm: 13px;
+  --font-md: 15px;
+  --font-lg: 17px;
+  --font-xl: 20px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --shadow-base: 0 14px 34px rgba(2, 8, 24, 0.55);
+  --shadow-soft: 0 8px 22px rgba(91, 140, 255, 0.35);
+  --panel-blur: saturate(1.25) blur(10px);
+}
+
+[data-theme='light'] {
+  --bg-app: #f3f7ff;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #eef3fb;
+  --bg-soft: #f8fbff;
+  --text-primary: #1e293b;
+  --text-secondary: #60708c;
+  --text-inverse: #f8fafc;
+  --border-color: #d7e0ee;
+  --primary-color: #2563eb;
+  --primary-soft: rgba(37, 99, 235, 0.14);
+  --success-color: #16a34a;
+  --danger-color: #dc2626;
+  --shadow-base: 0 12px 28px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 8px 20px rgba(37, 99, 235, 0.22);
+  --panel-blur: none;
+}
+
+body {
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--font-md);
+  line-height: 1.6;
+  font-weight: var(--font-weight-regular);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(91, 140, 255, 0.25), transparent 36%),
+    radial-gradient(circle at 100% 0%, rgba(61, 220, 151, 0.16), transparent 38%),
+    radial-gradient(circle at 50% 100%, rgba(91, 140, 255, 0.16), transparent 40%),
+    var(--bg-app);
+  color: var(--text-primary);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+/* ===== Scrollbar ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary-color) 52%, #ffffff 8%) color-mix(in srgb, var(--bg-soft) 82%, transparent);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--bg-soft) 78%, transparent);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--primary-color) 70%, #ffffff 10%) 0%,
+    color-mix(in srgb, var(--primary-color) 50%, #94a3b8 8%) 100%
+  );
+  border: 2px solid color-mix(in srgb, var(--bg-soft) 84%, transparent);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--primary-color) 80%, #ffffff 8%) 0%,
+    color-mix(in srgb, var(--primary-color) 62%, #94a3b8 8%) 100%
+  );
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: color-mix(in srgb, var(--primary-color) 84%, #0f172a 8%);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.app-page {
+  color: var(--text-primary);
+  font-size: var(--font-md);
+}
+
+.app-page h1,
+.app-page h2,
+.app-page h3,
+.app-page h4,
+.app-page h5,
+.app-page h6,
+.app-page .ant-typography strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+.app-page .ant-typography,
+.app-page .ant-btn,
+.app-page .ant-input,
+.app-page .ant-select-selection-item {
+  font-weight: var(--font-weight-regular);
+}
+
+.app-page .ant-typography-secondary,
+.app-page .ant-typography.ant-typography-secondary,
+.app-page .muted-text {
+  font-weight: var(--font-weight-medium);
+}
+
+.panel-surface {
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  backdrop-filter: var(--panel-blur);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: var(--shadow-base);
+}
+
+.muted-text {
+  color: var(--text-secondary);
+}
+
+.theme-toggle-btn {
+  border-radius: 10px !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  background: var(--bg-soft) !important;
+}
+
+.table-panel .ant-table {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.table-panel .ant-table-thead > tr > th {
+  background: var(--bg-soft) !important;
+  color: var(--text-primary) !important;
+}
+
+.table-panel .ant-table-tbody > tr:hover > td {
+  background: var(--primary-soft) !important;
+}
+
+.table-panel .ant-table-cell {
+  border-bottom-color: var(--border-color) !important;
+}
+
+.ant-btn-primary {
+  box-shadow: var(--shadow-soft);
+}
+
+.ant-btn-primary:disabled {
+  box-shadow: none;
+}
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-outlined,
+.ant-select-selector,
+.ant-picker {
+  border-radius: 10px !important;
+}
+
+.app-page .ant-input,
+.app-page .ant-input-affix-wrapper,
+.app-page .ant-select-selector,
+.app-page .ant-picker,
+.app-page .ant-input-number,
+.app-page .ant-input-number-input-wrap {
+  background: var(--bg-soft) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.app-page .ant-input::placeholder,
+.app-page .ant-input-number-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.app-page .ant-select-arrow,
+.app-page .ant-picker-suffix,
+.app-page .ant-input-suffix {
+  color: var(--text-secondary) !important;
+}
+
+.ant-card {
+  border-radius: 14px !important;
+}
+
+.ant-card,
+.ant-modal-content,
+.ant-dropdown .ant-dropdown-menu {
+  border: 1px solid var(--border-color);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.app-page .ant-table-thead > tr > th,
+.app-page .ant-table-tbody > tr > td,
+.app-page .ant-table-cell {
+  color: var(--text-primary) !important;
+}
+
+.app-page .ant-table-pagination .ant-pagination-item a,
+.app-page .ant-pagination-item-link {
+  color: var(--text-secondary);
+}
+
+.app-page .ant-typography {
+  color: var(--text-primary);
+}
+
+.app-page .ant-typography-secondary,
+.app-page .ant-typography.ant-typography-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.app-page .ant-tag {
+  border-radius: 999px;
+}
+
+.app-page .ant-list-item {
+  border-bottom-color: color-mix(in srgb, var(--border-color) 55%, transparent);
+}
+
+.app-page .ant-layout-sider .ant-menu {
+  background: transparent !important;
+  color: rgba(237, 242, 255, 0.78);
+}
+
+.app-page .ant-layout-sider .ant-menu-item {
+  margin: 4px 8px !important;
+  border-radius: 12px !important;
+  height: 42px !important;
+  line-height: 42px !important;
+}
+
+.app-page .ant-layout-sider .ant-menu-item-selected {
+  background: linear-gradient(90deg, rgba(91, 140, 255, 0.48), rgba(91, 140, 255, 0.2)) !important;
+  box-shadow: inset 0 0 0 1px rgba(91, 140, 255, 0.35);
+}
+
+.app-page .ant-layout-sider .ant-menu-item:hover {
+  background: rgba(91, 140, 255, 0.18) !important;
+}
+
+.app-page .ant-btn-default,
+.app-page .ant-btn-text {
+  color: var(--text-primary);
+}
+
+.app-page .ant-tabs-tab {
+  color: var(--text-secondary);
+}
+
+.app-page .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary-color) !important;
+}
+
+.app-page .ant-tabs-ink-bar {
+  background: var(--primary-color) !important;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Markdown 内容样式 ===== */
+.markdown-body {
+  font-size: var(--font-md);
+  line-height: 1.75;
+}
+
+.markdown-body .markdown-content > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-body .markdown-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body p {
+  margin: 0.5em 0;
+}
+
+.markdown-body p:first-child {
+  margin-top: 0;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin: 0.8em 0 0.4em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.markdown-body h1:first-child,
+.markdown-body h2:first-child,
+.markdown-body h3:first-child {
+  margin-top: 0;
+}
+
+.markdown-body h1 { font-size: 1.4em; }
+.markdown-body h2 { font-size: 1.25em; }
+.markdown-body h3 { font-size: 1.1em; }
+
+.markdown-body code:not(pre code) {
+  background: rgba(37, 99, 235, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #c026d3;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+.markdown-body pre {
+  background: #111827;
+  padding: 14px 18px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 0.6em 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  color: #dbe4f3;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: inherit;
+  white-space: pre;
+}
+
+.markdown-body .hljs {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.6em 0;
+  font-size: var(--font-sm);
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown-body thead {
+  background: var(--bg-soft);
+}
+
+.markdown-body th {
+  padding: 8px 14px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.markdown-body td {
+  padding: 6px 14px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.markdown-body tbody tr:nth-child(even) {
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 1.5em;
+  margin: 0.4em 0;
+}
+
+.markdown-body li {
+  margin: 0.2em 0;
+}
+
+.markdown-body blockquote {
+  border-left: 3px solid var(--primary-color);
+  padding: 4px 12px;
+  margin: 0.5em 0;
+  color: var(--text-secondary);
+  background: var(--bg-soft);
+  border-radius: 0 6px 6px 0;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 0.8em 0;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0.4em 0;
+}
+
+.markdown-body .katex-display {
+  margin: 0.6em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .katex {
+  font-size: 1.05em;
+}

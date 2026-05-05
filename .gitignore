@@ -1,0 +1,94 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_dsa
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+.venv/
+venv/
+env/
+ENV/
+
+# Logs and runtime output
+logs/
+*.log
+*.tmp
+*.cache
+temp/
+tmp/
+
+# SQLite/runtime databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+stock_prices.xlsx
+chroma_db/
+image_show/
+
+# If a sanitized sample database is needed later, place it under docs/ or samples/
+# and unignore it explicitly.
+
+# Frontend dependencies and builds
+node_modules/
+frontend/node_modules/
+dist/
+build/
+out/
+frontend/dist/
+frontend/dist-ssr/
+*.tsbuildinfo
+*.local
+
+# Package manager noise
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor and IDE files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Personal workspace/tooling
+.trae/
+workspace/
+.cleanup_backup_*/
+
+# Archives and large generated binaries
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
